@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etche a sketch</title>
+
+    <style>
+      *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --lightlimeish: #c91212;
+        --darklimeish: #a8b166;
+        --whiteish: #fefae0;
+      }
+      body {
+        background-color: var(--darklimeish);
+        height: 100vh;
+        max-width: 100%;
+        padding: 10px;
+      }
+
+      .canves{
+        background-color: var(--lightlimeish);
+        margin: 30px auto;
+        border-radius: 20px;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(1px,3px));
+        grid-template-rows: repeat(auto-fit,minmax(1px,3px));
+        width: 40em;
+        height: 40em;
+        overflow: hidden;
+      }
+
+      .canves > .cell{
+        width: 100%;
+        background-color: var(--whiteish);
+        height: 100%;
+      }
+
+      .blackify{background-color: #000!important;}
+
+    </style>
+  </head>
+  <body>
+    <!--<div class="canves">
+        <div class="cell">
+
+        </div>
+    </div>-->
+
+    <script>
+
+      function Foundation() {
+        let BODY = document.body;
+        let canvesDiv = document.createElement("div");
+        canvesDiv.setAttribute("class", "canves");
+        BODY.appendChild(canvesDiv);
+        return canvesDiv;
+      }
+
+      /**@param {HTMLDivElement} canvesDivReturnedByFoundation**/
+      function CreateCells(canvesDivReturnedByFoundation) {
+        for (let w = 0; w <= 200*200; w++) {
+          let cell = document.createElement("div");
+          cell.setAttribute("class", "cell");
+          cell.addEventListener("mouseenter",()=>{a(cell)});
+          canvesDivReturnedByFoundation.appendChild(cell);
+        }
+      }
+
+      /**@param {HTMLDivElement} button**/
+      function a(button){
+        button.setAttribute("class","cell blackify");
+        console.log('s')
+      }
+
+      CreateCells(Foundation());
+    </script>
+  </body>
+</html>
