@@ -18,7 +18,7 @@ module.exports = {
       filename: "index.html",
       template: "src/template.html",
     }),
-    new WebpackBundleAnalyzer(),
+    // new WebpackBundleAnalyzer(),
   ],
   module: {
     rules: [
@@ -35,6 +35,10 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|png|jpeg)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
